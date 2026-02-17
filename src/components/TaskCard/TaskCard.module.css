@@ -1,0 +1,43 @@
+.taskCardContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 14px;
+    margin-bottom: 8px;
+
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.taskCardContainer:hover {
+    background: var(--bg-hover);
+}
+
+.textInput {
+    flex: 1;
+    padding: 6px 8px;
+
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.textInput:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.textLabel {
+    flex: 1;
+    font-size: 14px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}

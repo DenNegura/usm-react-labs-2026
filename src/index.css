@@ -1,0 +1,25 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+
+  --bg-main: #111111;
+  --bg-card: #1a1a1a;
+  --bg-hover: #222222;
+
+  --text-primary: #e5e5e5;
+  --text-secondary: #9ca3af;
+
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+
+  --border: #2a2a2a;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
