@@ -12,16 +12,21 @@ export default function TaskCard({task, onUpdate, onDelete}) {
 
     const handleSaveOrEdit = () => {
         if (isEditMode) {
-            onUpdate && onUpdate({...task, completed: isCompleted, text});
+            onUpdate && onUpdate(task.id, {...task, completed: isCompleted, text});
         }
         setIsEditMode((flag) => !flag);
+    }
+
+    const handleCompleted = (isCompleted) => {
+        setIsCompleted(isCompleted)
+        onUpdate && onUpdate(task.id, {...task, completed: isCompleted});
     }
 
     return (
         <div className={styles.taskCardContainer}>
             <input type={'checkbox'}
                    checked={isCompleted}
-                   onChange={() => setIsCompleted(!isCompleted)}/>
+                   onChange={() => handleCompleted(!isCompleted)}/>
             {isEditMode ?
                 <input type="text"
                        value={text}
@@ -31,7 +36,7 @@ export default function TaskCard({task, onUpdate, onDelete}) {
                 <label className={`${styles.textLabel} ${isCompleted ? styles.completed : ''}`}>{text}</label>
             }
             <Button onClick={handleSaveOrEdit}>{isEditMode ? 'save' : 'edit'}</Button>
-            <Button onDelete={() => onDelete?.(task?.id)} disabled={isEditMode}>delete</Button>
+            <Button onClick={() => onDelete?.(task?.id)} disabled={isEditMode}>delete</Button>
         </div>
     );
 }
