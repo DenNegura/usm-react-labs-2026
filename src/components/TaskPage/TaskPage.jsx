@@ -3,6 +3,7 @@ import styles from "./TaskPage.module.css";
 import TaskList from "../TaskList";
 import TaskForm from "../TaskForm";
 import TaskFilter from "../TaskFilter/index.js";
+import {useTasks} from "../../provider/TaskProvider.jsx";
 
 
 function filterTasks(tasks, filters) {
@@ -35,7 +36,9 @@ function filtersReducer(state, action) {
     }
 }
 
-export default function TaskPage({tasks, dispatch}) {
+export default function TaskPage() {
+
+    const [tasks, dispatch] = useTasks();
 
     const [filters, changeFilters] = useReducer(filtersReducer, {text: "", status: "all"});
 
