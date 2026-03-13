@@ -1,9 +1,9 @@
 import {useMemo, useReducer} from "react";
 import styles from "./TaskPage.module.css";
-import TaskList from "../TaskList";
-import TaskForm from "../TaskForm";
-import TaskFilter from "../TaskFilter/index.js";
-import {useTasks} from "../../provider/TaskProvider.jsx";
+import TaskList from "../../components/TaskList/index.js";
+import TaskForm from "../../components/TaskForm/index.js";
+import TaskFilter from "../../components/TaskFilter/index.js";
+import {TaskProvider, useTasks} from "../../provider/TaskProvider.jsx";
 
 
 function filterTasks(tasks, filters) {
@@ -45,12 +45,12 @@ export default function TaskPage() {
     const filteredTasks = useMemo(() => filterTasks(tasks, filters), [tasks, filters]);
 
     return (
-        <div className={styles.taskPageContainer}>
-            <TaskFilter filters={filters} dispatch={changeFilters}/>
-            <TaskForm onSubmit={(task) => dispatch({type: 'add', task})}/>
-            <TaskList tasks={filteredTasks}
-                      onUpdateTask={(id, task) => dispatch({type: "update", id, task})}
-                      onDeleteTask={(id) => dispatch({type: "delete", id})}/>
-        </div>
+            <div className={styles.taskPageContainer}>
+                <TaskFilter filters={filters} dispatch={changeFilters}/>
+                <TaskForm onSubmit={(task) => dispatch({type: 'add', task})}/>
+                <TaskList tasks={filteredTasks}
+                          onUpdateTask={(id, task) => dispatch({type: "update", id, task})}
+                          onDeleteTask={(id) => dispatch({type: "delete", id})}/>
+            </div>
     )
 }

@@ -1,8 +1,11 @@
 import {useState} from "react";
 import Button from "../Button";
 import styles from "./TaskCard.module.css";
+import {Link, useNavigate} from "react-router";
 
 export default function TaskCard({task, onUpdate, onDelete}) {
+
+    const navigator = useNavigate();
 
     const [isEditMode, setIsEditMode] = useState(false);
 
@@ -35,8 +38,9 @@ export default function TaskCard({task, onUpdate, onDelete}) {
                        className={styles.textInput}/> :
                 <label className={`${styles.textLabel} ${isCompleted ? styles.completed : ''}`}>{text}</label>
             }
-            <Button onClick={handleSaveOrEdit}>{isEditMode ? 'save' : 'edit'}</Button>
+            {/*<Button onClick={handleSaveOrEdit}>{isEditMode ? 'save' : 'edit'}</Button>*/}
             <Button onClick={() => onDelete?.(task?.id)} disabled={isEditMode}>delete</Button>
+            <Link to={"/tasks/" + task.id}>edit</Link>
         </div>
     );
 }

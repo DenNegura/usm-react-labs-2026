@@ -1,0 +1,30 @@
+nav {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 16px 0;
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+}
+
+nav a {
+    text-decoration: none;
+    color: #e4e4e4;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+nav a:hover {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+nav a:active {
+    transform: scale(0.95);
+}
